@@ -1,1 +1,1 @@
-# vue-first-app!
+# vue-first-app
