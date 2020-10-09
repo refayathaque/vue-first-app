@@ -1,12 +1,12 @@
 <template>
-  <li>
-    <h2>{{ name }} {{ isFavorite === 1 ? '(Favorite)' : '' }}</h2>
-    <button @click="toggleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
-    <ul v-if="detailsAreVisible">
-      <li>Phone: {{ phoneNumber }}</li>
-      <li>Email: {{ emailAddress }}</li>
-    </ul>
-  </li>
+  <h3>{{ name }} {{ isFavorite === 1 ? '(Favorite)' : '' }}</h3>
+  <h4>{{ isIntelligent ? 'Intelligent' : '' }}</h4>
+  <button @click="toggleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
+  <button @click="toggleIntelligence">Make {{ isIntelligent ? 'un' : '' }}intelligent</button>
+  <ul v-if="detailsAreVisible">
+    <li>Phone: {{ phoneNumber }}</li>
+    <li>Email: {{ emailAddress }}</li>
+  </ul>
 </template>
 
 <script>
@@ -31,24 +31,43 @@ export default {
       required: true,
       validator: (value) => {
         return value === 0 || value === 1
+        // 0 is false, 1 is true
       }
+    },
+    isIntelligent: {
+      type: Boolean,
+      required: false,
+      default: false
     }
+  },
+  // emits: [ 'toggle-favorite' ],
+  emits: { 
+    'toggle-intelligence': (emailAddress) => {
+      if (emailAddress) {
+        return true
+      } else {
+        console.warn ('emailAddress is missing!')
+        return false
+      }
+    }   
   },
   data() {
     return {
       detailsAreVisible: false,
-      friend: {
-        id: 'Manuel',
-        name: 'Manuel Lorenz',
-        phoneNumber: '2023415040',
-        emailAddress: 'm.lorenz@gmail.com'
-      }
+      // friend: {
+      //   id: 'Manuel',
+      //   name: 'Manuel Lorenz',
+      //   phoneNumber: '2023415040',
+      //   emailAddress: 'm.lorenz@gmail.com'
+      // }
     }
   },
   methods: {
     toggleDetails() {
-      console.log(this.name, this.phoneNumber, this.emailAddress)
       this.detailsAreVisible = !this.detailsAreVisible
+    },
+    toggleIntelligence() {
+      this.$emit('toggle-intelligence', this.emailAddress);
     }
   }
 }
