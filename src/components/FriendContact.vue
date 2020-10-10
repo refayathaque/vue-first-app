@@ -7,6 +7,7 @@
     <li>Phone: {{ phoneNumber }}</li>
     <li>Email: {{ emailAddress }}</li>
   </ul>
+  <button @click="$emit('delete-friend', emailAddress)">Delete</button>
 </template>
 
 <script>
@@ -49,7 +50,8 @@ export default {
         console.warn ('emailAddress is missing!')
         return false
       }
-    }   
+    },
+    'delete-friend': {}   
   },
   data() {
     return {
@@ -68,7 +70,10 @@ export default {
     },
     toggleIntelligence() {
       this.$emit('toggle-intelligence', this.emailAddress);
-    }
+    },
+    // deleteFriend() {
+    //   this.$emit('delete-friend');
+    // }
   }
 }
 </script>
