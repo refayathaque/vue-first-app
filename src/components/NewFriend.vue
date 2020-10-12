@@ -13,7 +13,7 @@
       <input type="email" v-model="enteredEmailAddress" />
     </div>
     <div>
-      <button>Add Contact</button>
+      <button>Add contact</button>
     </div>
   </form>
 </template>
