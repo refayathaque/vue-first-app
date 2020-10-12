@@ -34,7 +34,7 @@
     :is-favorite="1"
   ></friend-contact>
 
-  <active-user></active-user>
+  <active-user :username="userData.username" :age="userData.age"></active-user>
   <user-data @submit-user-data="submitUserData"></user-data>
 </template>
 
