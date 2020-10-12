@@ -7,7 +7,7 @@
     </div>
     <div>
       <label>Age</label>
-      <input type="age" v-model="enteredAge" />
+      <input type="text" v-model="enteredAge" />
     </div>
     <div>
       <button>Submit user data</button>
@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  // 'emitting custom events'
   emits: [ 'submit-user-data' ],
   data() {
     return {
