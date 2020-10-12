@@ -33,6 +33,9 @@
     email-address="t.lorenz@gmail.com"
     :is-favorite="1"
   ></friend-contact>
+
+  <active-user></active-user>
+  <user-data @submit-user-data="submitUserData"></user-data>
 </template>
 
 <script>
@@ -65,6 +68,10 @@ export default {
           isIntelligent: true,
         },
       ],
+      userData : {
+        username: '',
+        age: ''
+      }
     };
   },
   methods: {
@@ -89,6 +96,11 @@ export default {
       this.friends = this.friends.filter(
         friend => friend.emailAddress !== emailAddress
       );
+    },
+    submitUserData(username, age) {
+      console.log(username, age)
+      this.userData.username = username
+      this.userData.age = age
     }
   },
 };

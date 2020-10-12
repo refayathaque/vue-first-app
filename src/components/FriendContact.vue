@@ -1,7 +1,7 @@
 <template>
   <h3>{{ name }} {{ isFavorite === 1 ? '(Favorite)' : '' }}</h3>
   <h4>{{ isIntelligent ? 'Intelligent' : '' }}</h4>
-  <button @click="toggleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
+  <button @click="toggleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} details</button>
   <button @click="toggleIntelligence">Make {{ isIntelligent ? 'un' : '' }}intelligent</button>
   <ul v-if="detailsAreVisible">
     <li>Phone: {{ phoneNumber }}</li>
